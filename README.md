@@ -1,2 +1,3 @@
 # Pesterchum
-A copy of the messaging client from Homestuck
+
+This is my copy/version of the messaging client from Homestuck.
