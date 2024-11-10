@@ -1,0 +1,59 @@
+html {
+/*  border: 5px solid #FFF700;*/
+  background-color: #FFB500;
+}
+
+.name {
+  /* Big name at top */
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 34px;
+  margin-top: -2%;
+  margin-bottom: -2%;
+}
+.box {
+  /* Box with face for chum handle */
+  width: 92%;
+  margin: 3%;
+  height: 24px;
+  border: 3px solid #FFF700;
+  background-color: #000000;
+  font-size: 25px;
+  color: #FFFFFF
+}
+.logPass {
+  margin-top: 5%;
+  text-align: left;
+  margin-left: 8%;
+  margin-bottom: -2%;
+}
+.login {
+  width: 50%;
+  height: 60px;
+  border: 3px solid #C48A00;
+  background-color: #FFF700;
+  font-size: 20px;
+}
+.login:hover {
+  background-color: #FFE700;
+  border: 3px solid #C49A00;
+}
+.login:active {
+  background-color: #FFD800;
+  border: 3px solid #C4AA00;
+}
+.smallButton {
+  width: 48%;
+  height: 10%;
+  border: 3px solid #C48A00;
+  background-color: #FFF700;
+  font-size: 18px;
+}
+.smallButton:hover {
+  background-color: #FFE700;
+  border: 3px solid #C49A00;
+}
+.smallButton:active {
+  background-color: #FFD800;
+  border: 3px solid #C4AA00;
+}
