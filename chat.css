@@ -1,0 +1,57 @@
+.nameCell {
+  background-color: #c18800;
+  font-size: 25px;
+  color: #FFFFFF;
+  word-spacing: 5px;
+}
+.nameTable {
+  height: 60px;
+  width: 100%;
+  margin-bottom: -2.5%;
+}
+.pesterLog {
+  padding-left: 5%;
+}
+.chatTable {
+  height: 250px;
+  width: 95%;
+  margin: 2.5%;
+  margin-top: -2.5%;
+  border: 3px solid #B97800;
+}
+.chatCell {
+  background-color: #FFFFFF;
+  font-size: 20px;
+  color: #000000;
+  word-spacing: 5px;
+  text-align: left;
+  vertical-align: top;
+}
+.bottomTable {
+  border-spacing: 3px;
+  width: 95.8%;
+  margin: 2.1%;
+  margin-bottom: -1%;
+  margin-top: -2%;
+  height: 48px;
+}
+.messageCell {
+  background-color: #FFFFFF;
+  border: 3px solid #B97800;
+  text-align: justify;
+  font-size: 30px;
+  color: #000000;
+}
+.sendCell {
+  border: 3px solid #B97800;
+  background-color: #FFF700;
+  font-size: 22px;
+  text-align: center;
+  text-overflow: clip;
+  width: 25%;
+  color: #000000;
+}
+html {
+ background-color: #ffb400;
+/*  border: 5px solid #FFF700; */
+}

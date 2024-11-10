@@ -1,0 +1,37 @@
+html {
+/*  border: 5px solid #FFF700;*/
+  background-color: #FFB500;
+}
+.moodCell {
+  border: 3px solid #C48A00;
+  background-color: #FFF700;
+  padding: 10px;
+  font-size: 40px;
+  text-align: left;
+}
+.moodCell:hover {
+  background-color: #FFE700;
+  border: 3px solid #C49A00;
+}
+.moodCell:active {
+  background-color: #FFD800;
+  border: 3px solid #C4AA00;
+}
+.specialCell {
+  border: 3px solid #C48A00;
+  background-color: #FFF700;
+  padding: 10px;
+  font-size: 40px;
+  text-align: left;
+}
+.specialCell:hover {
+  background-color: #FFE700;
+  border: 3px solid #C49A00;
+}
+.specialCell:active {
+  background-color: #FFD800;
+  border: 3px solid #C4AA00;
+}
+.selectCell {
+
+}

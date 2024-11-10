@@ -1,0 +1,15 @@
+{
+  "name": "pesterchum",
+  "version": "1.0.0",
+  "description": "Pesterchum Messaging Client",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "modMaker",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^28.1.3",
+    "ws": "^8.16.0"
+  }
+}
