@@ -30,12 +30,12 @@ app.on('ready', function(){
     // REGISTER WINDOWS SIZE 500, 500
     // PENDING WINDOWS SIZE 800, 450
   });
-  mainWindow.setContentSize(400, 620)
+  mainWindow.setContentSize(400, 450)
   //mainWindow.setSize(400, 700) find better solution to sizing bug after moving application
-  //mainWindow.setResizable(false)
+  mainWindow.setResizable(false)
   // Load HTML into the new window
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, pages[0]),
+    pathname: path.join(__dirname, pages[1]),
     protocol: 'file:',
     slashes: true
   }))
