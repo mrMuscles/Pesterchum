@@ -10,11 +10,52 @@
     <table>
       <tr>
         <th class=moodCell id="backBtn"><==</th>
-        <script src="./settings.js"></script>
         <th class=moodCell>GENERAL</th>
         <th class=moodCell>QUIRKS</th>
-        <th class=moodCell>Friendships</th>
+        <th class=moodCell id="friendBtn">Friendships</th>
       </tr>
     </table>
+    <div id="friendList">
+      <table>
+        <tr>
+          <th class="textCell">Search:</th>
+          <th><input class="inputCell" maxlength="22" class=box></th>
+          <th class="specialCell">BLOCK</th>
+          <th class="specialCell">DELETE</th>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th class="specialCell">SELECT ALL</th>
+          <th class="specialCell">DESELECT ALL</th>
+          <th class="favoriteCell">FAVORITE</th>
+        </tr>
+      </table>
+        <div class="scroll">
+          <table id="friendName">
+            <tr>
+              <th class="friendsName" id="blank">You Have No Friends Right Now! D:</th>
+            </tr>
+          </table>
+          <!--
+          <button type="button" onClick="testFunction()">Yo</button>
+          <div class="requestContainer" id="pendingList">
+            <div class="requestButton">+</div>
+          </div>
+          This is the button to the pending friend requests page
+          however it is currently still in development
+        -->
+        </div>
+        <table>
+          <tr>
+            <!-- At some point move this down slightly so it looks better -->
+            <th class="addCell">Add A Friend:</th>
+            <th><input class="inputCell" maxlength="40" class=box id="friendEmail"></th>
+            <th class=specialCell id="addBtn">ADD</th>
+          </tr>
+        </table>
+      </div>
+    <script src="./settings.js"></script>
+
   </body>
 </html>
