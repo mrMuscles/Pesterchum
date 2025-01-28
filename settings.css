@@ -2,12 +2,65 @@ html {
 /*  border: 5px solid #FFF700;*/
   background-color: #FFB500;
 }
+.friendsName {
+  font-size: 35px;
+  font-weight: bold;
+}
+.requestContainer {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  right: 0;
+}
+.requestButton {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: #2cb3f0;
+  bottom: 20;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  color: #FFFFFF;
+  line-height: 45px;
+  text-align: center;
+  font-size: 23px;
+  z-index: 100px;
+  cursor: pointer;
+}
+.scroll {
+  overflow-y: auto;
+  max-height: 200px;
+  height: 200px;
+  border: 3px solid #000000
+}
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background: #FAFAFA;
+  border-radius: 10vw;
+  margin-block: .1em;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFF000;
+  border-radius: 10vw;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F00000;
+}
+.friendBar {
+  font-size: 30px;
+  margin-bottom: -20px;
+}
 .moodCell {
   border: 3px solid #C48A00;
   background-color: #FFF700;
   padding: 10px;
   font-size: 40px;
   text-align: left;
+  cursor: pointer;
 }
 .moodCell:hover {
   background-color: #FFE700;
@@ -20,9 +73,10 @@ html {
 .specialCell {
   border: 3px solid #C48A00;
   background-color: #FFF700;
-  padding: 10px;
-  font-size: 40px;
+  padding: 5px;
+  font-size: 25px;
   text-align: left;
+  cursor: pointer;
 }
 .specialCell:hover {
   background-color: #FFE700;
@@ -32,6 +86,38 @@ html {
   background-color: #FFD800;
   border: 3px solid #C4AA00;
 }
-.selectCell {
-
+.favoriteCell {
+  border: 3px solid #C48A00;
+  background-color: #FFF700;
+  padding: 5px;
+  font-size: 25px;
+  width: 45%;
+}
+.favoriteCell:hover {
+  background-color: #FFE700;
+  border: 3px solid #C49A00;
+}
+.favoriteCell:active {
+  background-color: #FFD800;
+  border: 3px solid #C4AA00;
+}
+.textCell {
+  font-size: 30px;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 3px;
+}
+.addCell {
+  font-size: 30px;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 3px;
+}
+.inputCell {
+    width: auto;
+    height: 100%;
+    border: 3px solid #FFF700;
+    background-color: #000000;
+    color: white;
+    font-size: 25px;
 }
