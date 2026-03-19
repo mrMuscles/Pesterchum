@@ -1,27 +1,42 @@
 const backButton = document.getElementById('backBtn')
 const blank = document.getElementById('blank')
-//var test = 0;
 
 backButton.addEventListener('click', () => {
     window.mainConnector.toSettings()
 })
 
-function populateFriendRequests(newRequest) {
-  var table = document.getElementById("friendName");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  cell1.classList.add("friendsName")
-  cell1.innerHTML = newRequest; // this needs to be the name of the friend you have!
+function populateFriendRequests(requests) {
+    const table = document.getElementById("friendName");
+    const blankCell = document.getElementById("blank");
+    if (requests && requests.length > 0) {
+        if (blankCell) {
+            blankCell.remove();
+        }
+        requests.forEach(function(request) {
+            const row = table.insertRow(-1);
+            const cell1 = row.insertCell(0);
+            cell1.classList.add("friendsName");
+            cell1.innerHTML = request;
+        });
+    }
 }
 
-function testFunction() {
-  var table = document.getElementById("friendName");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  cell1.classList.add("friendsName")
-  if(blank) {
-    blank.remove();
-  }
-  //test = test + 1;
-  cell1.innerHTML = "Hey";
+function addNewFriendRequest(username) {
+    const table = document.getElementById("friendName");
+    const blankCell = document.getElementById("blank");
+    if (blankCell) {
+        blankCell.remove();
+    }
+    const row = table.insertRow(-1);
+    const cell1 = row.insertCell(0);
+    cell1.classList.add("friendsName");
+    cell1.innerHTML = username;
 }
+
+window.mainConnector.onReceiveFriendRequests((requests) => {
+    populateFriendRequests(requests);
+});
+
+window.mainConnector.onReceiveNewFriendRequest((username) => {
+    addNewFriendRequest(username);
+});

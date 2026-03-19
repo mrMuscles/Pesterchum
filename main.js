@@ -7,12 +7,9 @@ const { Notification } = require('electron')
 let mainWindow;
 const pages = ["mainSite.html", "login.html", "settings.html", "chat.html", "register.html", "pending.html"];
 let ws;
-let friends = {
-
-}
-let friendRequests = {
-
-}
+let friends = []
+let friendRequests = []
+let currentPageIndex = -1;
 
 // Listen to ready App
 app.on('ready', function(){
@@ -54,12 +51,16 @@ app.on('ready', function(){
 
   ipcMain.on('switchToSettings', () => {
     console.log("SEND TO SETTINGS SITE!!!") // ----------- needs to be deleted for production
+    currentPageIndex = 2;
     mainWindow.loadURL(url.format({
       pathname : path.join(__dirname, pages[2]),
       protocol:'file',
       slashes:true
     }));
     mainWindow.setContentSize(800, 450)
+    mainWindow.webContents.once('did-finish-load', () => {
+      mainWindow.webContents.send('giveFriendsList', friends);
+    });
   });
 
   ipcMain.on('switchToLogin', () => {
@@ -84,12 +85,16 @@ app.on('ready', function(){
 
   ipcMain.on('switchToPending', () => {
     console.log("SEND TO PENDING SITE!!!") // ----------- needs to be deleted for production
+    currentPageIndex = 5;
     mainWindow.loadURL(url.format({
       pathname : path.join(__dirname, pages[5]),
       protocol:'file',
       slashes:true
     }));
     mainWindow.setContentSize(800, 450)
+    mainWindow.webContents.once('did-finish-load', () => {
+      mainWindow.webContents.send('giveFriendRequests', friendRequests);
+    });
   });
 
 
@@ -151,6 +156,10 @@ function createWebSocketConnection() {
     if(parsedMessage["code"] == 102) {
       console.log(parsedMessage["username"]);
       console.log(parsedMessage["color"]);
+      currentPageIndex = 0;
+      if(parsedMessage["friends"]) {
+        friends = parsedMessage["friends"];
+      }
       mainWindow.loadURL(url.format({
           pathname : path.join(__dirname, pages[0]),
           protocol:'file',
@@ -168,10 +177,13 @@ function createWebSocketConnection() {
       // popup should NOT be windows notification
     }
     if(parsedMessage["code"] == 30000) {
-      const parsedMessage = JSON.parse(event.data);
       console.log("someone sent you a friend request!");
       console.log(parsedMessage["email"])
       console.log(parsedMessage["username"])
+      friendRequests.push(parsedMessage["username"]);
+      if(currentPageIndex == 5) {
+        mainWindow.webContents.send('newFriendRequest', parsedMessage["username"]);
+      }
         // send notification to windows saying new friend request
     /*  new Notification({
         title: 'Friend Request!',
@@ -179,13 +191,14 @@ function createWebSocketConnection() {
         icon: path.join(__dirname, 'images/notification.ico'),
       }).show() */
       // and maybe also have a popup on pesterchum
-      // also need to tell pending requests to populate with a new row
     }
     if(parsedMessage["code"] == 603)  {
-      const parsedMessage = JSON.parse(event.data);
       console.log("YOU ARE NOW FRIENDS WITH:")
       console.log(parsedMessage["username"])
-      // populate friend list with new friend!
+      friends.push(parsedMessage["username"]);
+      if(currentPageIndex == 2) {
+        mainWindow.webContents.send('newFriend', parsedMessage["username"]);
+      }
     }
     if(parsedMessage["code"] == 30002) {
       // it just means that the server got your request and is creating a friendship

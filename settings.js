@@ -1,11 +1,9 @@
 const backButton = document.getElementById('backBtn')
 const friendButton = document.getElementById('friendBtn')
+const pendingButton = document.getElementById('pendingList')
 const flist = document.getElementById('friendList')
-const pending = document.getElementById('pendingList')
 const addButton = document.getElementById('addBtn')
-const blank = document.getElementById('blank')
 flist.style.display = "none";
-var test = 0;
 
 backButton.addEventListener('click', () => {
     window.mainConnector.toMain()
@@ -15,7 +13,7 @@ friendButton.addEventListener('click', () => {
     flist.style.display = "block";
 })
 
-pending.addEventListener('click', () => {
+pendingButton.addEventListener('click', () => {
     window.mainConnector.toPending()
 })
 
@@ -24,14 +22,38 @@ addButton.addEventListener('click', () => {
     window.mainConnector.addFriend(email)
 })
 
-function testFunction() {
-  var table = document.getElementById("friendName");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  cell1.classList.add("friendsName")
-  if(blank) {
-    blank.remove();
-  }
-  test = test + 1;
-  cell1.innerHTML = "Hey" + test;
+function populateFriendsList(friends) {
+    const table = document.getElementById("friendName");
+    const blankCell = document.getElementById("blank");
+    if (friends && friends.length > 0) {
+        if (blankCell) {
+            blankCell.remove();
+        }
+        friends.forEach(function(friend) {
+            const row = table.insertRow(-1);
+            const cell1 = row.insertCell(0);
+            cell1.classList.add("friendsName");
+            cell1.innerHTML = friend;
+        });
+    }
 }
+
+function addNewFriend(username) {
+    const table = document.getElementById("friendName");
+    const blankCell = document.getElementById("blank");
+    if (blankCell) {
+        blankCell.remove();
+    }
+    const row = table.insertRow(-1);
+    const cell1 = row.insertCell(0);
+    cell1.classList.add("friendsName");
+    cell1.innerHTML = username;
+}
+
+window.mainConnector.onReceiveFriendsList((friends) => {
+    populateFriendsList(friends);
+});
+
+window.mainConnector.onReceiveNewFriend((username) => {
+    addNewFriend(username);
+});
